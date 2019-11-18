@@ -4,6 +4,7 @@
 
 ### Using wsgi:
 ```
+pip3 install -r requirements.txt
 python3 run.py
 open http://localhost:8000
 ```
