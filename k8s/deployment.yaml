@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: citatos
+  labels:
+    maintainer: maslick
+    project: sandbox
+    app: citatos
+spec:
+  ports:
+    - port: 8080
+      targetPort: http
+  selector:
+    maintainer: maslick
+    project: sandbox
+    app: citatos
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: citatos
+  labels:
+    maintainer: maslick
+    project: sandbox
+    app: citatos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      maintainer: maslick
+      project: sandbox
+      app: citatos
+  template:
+    metadata:
+      name: citatos
+      labels:
+        maintainer: maslick
+        project: sandbox
+        app: citatos
+    spec:
+      containers:
+        - image: maslick/citatos
+          imagePullPolicy: Always
+          name: citatos
+          ports:
+            - containerPort: 5000
+              name: http
+              protocol: TCP
+          env:
+            - name: BACKEND_URL
+              value: 'maslick.io'

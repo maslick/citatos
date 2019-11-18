@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: k8s-cartofell-ui
+  labels:
+    maintainer: maslick
+    project: sandbox
+    app: citatos
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: citatos.maslick.ru
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: citatos
+              servicePort: 8080
