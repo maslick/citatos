@@ -2,7 +2,7 @@
 
 [![image size](https://img.shields.io/badge/image%20size-336MB-blue.svg)](https://hub.docker.com/r/maslick/citatos)
 
-### Using wsgi:
+### Using dummy wsgi server (BaseHTTPServer):
 ```
 pip3 install -r requirements.txt
 python3 run.py
