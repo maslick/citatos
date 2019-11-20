@@ -1,10 +1,10 @@
 FROM python:3
 
 WORKDIR /app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt
+
+COPY . ./
+
 EXPOSE 5000
-COPY . /app
-
-RUN pip install -U pip
-RUN pip install -r /app/requirements.txt
-
 CMD ["gunicorn", "run:app", "-c", "gunicorn.config.py"]
