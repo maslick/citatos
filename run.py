@@ -1,4 +1,5 @@
 import os
+import random
 
 from quote import quote
 
@@ -10,7 +11,9 @@ def hello_world(environ, start_response):
     url = '<h1>Hello, world!</h1><div>BACKEND_URL: {0}</div><hr>'.format(backend_url)
 
     citations = ""
-    for q in quote('Pushkin', limit=5):
+    authors = ["pushkin", "chekhov", "lermontov", "azimov", "pasternak", "bulgakov", "lenin", "strugatsky", "gumilyov",
+               "akhmatova"]
+    for q in quote(random.choice(authors), limit=5):
         citations += "<p>{0}: {1}</p>".format(q["author"], q["quote"])
     return [url.encode('utf-8'), citations.encode('utf-8')]
 
