@@ -1,7 +1,7 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: k8s-cartofell-ui
+  name: citatos
   labels:
     maintainer: maslick
     project: sandbox
