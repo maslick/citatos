@@ -7,6 +7,17 @@ backend_url = os.getenv("BACKEND_URL", "ya.ru")
 
 
 def hello_world(environ, start_response):
+    if environ["RAW_URI"] == "/health":
+        return health(environ, start_response)
+    return index(environ, start_response)
+
+
+def health(environ, start_response):
+    start_response('200 OK', [('Content-type', 'text/html')])
+    return ["UP".encode('utf-8')]
+
+
+def index(environ, start_response):
     start_response('200 OK', [('Content-type', 'text/html')])
     url = '<h1>Hello, world!</h1><div>BACKEND_URL: {0}</div><hr>'.format(backend_url)
 
